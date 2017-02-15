@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.function.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by midori on 2017/02/15.
@@ -18,6 +19,9 @@ public class Main {
 		);
 		List<String> listStr = Lists.newArrayList(
 				"1", "2", "3", "4", "5"
+		);
+		List<String> listStr2 = Lists.newArrayList(
+				"6", "7", "8", "9", "10"
 		);
 
 		Predicate<Integer> biggerThanZero = x -> x > 0;
@@ -50,15 +54,23 @@ public class Main {
 				listStr.stream().collect(new CommaJoiner()) // 1.2.3.4.5.
 		);
 
+		/**
+		 * concat(Stream<? extends T> a, Stream<? extends T> b)
+		 */
+		Stream.concat(listStr.stream(), listStr2.stream()).forEach(x ->
+				System.out.print(x)
+		);
 	}
 
 	private static class CommaJoiner implements Collector<String, StringBuilder, String> {
 
+		// create temporarily saved object
 		@Override
 		public Supplier<StringBuilder> supplier() {
 			return StringBuilder::new;
 		}
 
+		// processing
 		@Override
 		public BiConsumer<StringBuilder, String> accumulator() {
 			return (sb, s) -> {
@@ -67,6 +79,7 @@ public class Main {
 			};
 		}
 
+		// for parallel
 		@Override
 		public BinaryOperator<StringBuilder> combiner() {
 			return (sb1, sb2) -> {
@@ -75,11 +88,13 @@ public class Main {
 			};
 		}
 
+		// convert result type
 		@Override
 		public Function<StringBuilder, String> finisher() {
 			return sb -> sb.toString();
 		}
 
+		// ?
 		@Override
 		public Set<Characteristics> characteristics() {
 			return EnumSet.noneOf(Characteristics.class);
