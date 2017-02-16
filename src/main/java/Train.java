@@ -10,6 +10,7 @@ public class Train {
 	private int num;
 	private String name;
 	private List<Integer> courses = Lists.newArrayList();
+	private List<Double> distances = Lists.newArrayList();
 
 	public Train(String id) {
 		this.id = id;
@@ -22,6 +23,11 @@ public class Train {
 
 	public Train appendCourse(Integer course) {
 		courses.add(course);
+		return this;
+	}
+
+	public Train appendDistance(Double distance) {
+		distances.add(distance);
 		return this;
 	}
 
@@ -59,6 +65,14 @@ public class Train {
 
 	public void setCourses(List<Integer> courses) {
 		this.courses = courses;
+	}
+
+	public List<Double> getDistances() {
+		return distances;
+	}
+
+	public void setDistances(List<Double> distances) {
+		this.distances = distances;
 	}
 
 	@Override

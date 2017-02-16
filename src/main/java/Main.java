@@ -126,6 +126,28 @@ public class Main {
 				return s.getCourses().stream();
 			}
 		})); // 1 2 3 4 1 2 3 4
+
+		/**
+		 * flatMapToDouble(Function<? super T,? extends DoubleStream> mapper)
+		 */
+		Train td1 = new Train("1")
+				.appendDistance(1.0)
+				.appendDistance(2.0)
+				.appendDistance(3.0)
+				.appendDistance(4.0);
+		Train td2 = new Train("2")
+				.appendDistance(1.0)
+				.appendDistance(2.0)
+				.appendDistance(3.0)
+				.appendDistance(4.0);
+		List<Train> trains2 = Lists.newArrayList(td1, td2);
+		printStream(trains2.stream().flatMap(new Function<Train, Stream<Double>>() {
+			@Override
+			public Stream<Double> apply(Train s) {
+				return s.getDistances().stream();
+			}
+		})); // 1.0 2.0 3.0 4.0 1.0 2.0 3.0 4.0
+
 	}
 
 	private static <T> void printStream(Stream<T> stream) {
