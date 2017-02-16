@@ -2,6 +2,7 @@ import com.google.common.collect.Lists;
 
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.*;
 import java.util.stream.Collector;
@@ -91,6 +92,18 @@ public class Main {
 		);
 		// method reference
 		printStream(trains.stream().filter(Train::hasName)); // Train{name='nozomi'}
+
+		/**
+		 * findAny()
+		 */
+		Optional<Integer> num = listInt.stream().findAny();
+		num.ifPresent(x -> System.out.println(x)); // random
+
+		/**
+		 * findFirst()
+		 */
+		Optional<Integer> first = listInt.stream().findFirst();
+		num.ifPresent(x -> System.out.println(x)); // 1
 	}
 
 	private static <T> void printStream(Stream<T> stream) {
