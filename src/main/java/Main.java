@@ -57,9 +57,42 @@ public class Main {
 		/**
 		 * concat(Stream<? extends T> a, Stream<? extends T> b)
 		 */
-		Stream.concat(listStr.stream(), listStr2.stream()).forEach(x ->
-				System.out.print(x)
+		printStream(Stream.concat(listStr.stream(), listStr2.stream())); // 1 2 3 4 5 6 7 8 9 10
+
+		/**
+		 * count()
+		 */
+		System.out.println(
+				listStr.stream().count() // 5
 		);
+
+		/**
+		 * distinct()
+		 */
+		List<String> listDup = Lists.newArrayList(
+				"1", "1", "2", "3", "3"
+		);
+		printStream(listDup.stream().distinct()); // 1 2 3
+
+		/**
+		 * empty()
+		 */
+		Stream empty = Stream.empty();
+		System.out.println(empty.count()); // 0
+
+		/**
+		 * filter(Predicate<? super T> predicate)
+		 */
+		 printStream(listInt.stream().filter(x -> x > 5)); // 6 7 8 9 10
+	}
+
+	private static <T> void printStream(Stream<T> stream) {
+		stream.forEach(x -> {
+					System.out.print(x);
+					System.out.print(" ");
+				}
+		);
+		System.out.println();
 	}
 
 	private static class CommaJoiner implements Collector<String, StringBuilder, String> {
