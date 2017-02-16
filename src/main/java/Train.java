@@ -1,3 +1,7 @@
+import com.google.common.collect.Lists;
+
+import java.util.List;
+
 /**
  * Created by midori on 2017/02/16.
  */
@@ -5,6 +9,7 @@ public class Train {
 	private String id;
 	private int num;
 	private String name;
+	private List<Integer> courses = Lists.newArrayList();
 
 	public Train(String id) {
 		this.id = id;
@@ -13,6 +18,11 @@ public class Train {
 	public Train(String id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+
+	public Train appendCourse(Integer course) {
+		courses.add(course);
+		return this;
 	}
 
 	public boolean hasName() {
@@ -41,6 +51,14 @@ public class Train {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Integer> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Integer> courses) {
+		this.courses = courses;
 	}
 
 	@Override

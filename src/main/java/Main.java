@@ -104,6 +104,28 @@ public class Main {
 		 */
 		Optional<Integer> first = listInt.stream().findFirst();
 		num.ifPresent(x -> System.out.println(x)); // 1
+
+		/**
+		 * flatMap(Function<? super T,? extends Stream<? extends R>> mapper)
+		 * XXX one-to-many transformation
+		 */
+		Train t1 = new Train("1")
+				.appendCourse(1)
+				.appendCourse(2)
+				.appendCourse(3)
+				.appendCourse(4);
+		Train t2 = new Train("2")
+				.appendCourse(1)
+				.appendCourse(2)
+				.appendCourse(3)
+				.appendCourse(4);
+		List<Train> trains1 = Lists.newArrayList(t1, t2);
+		printStream(trains1.stream().flatMap(new Function<Train, Stream<Integer>>() {
+			@Override
+			public Stream<Integer> apply(Train s) {
+				return s.getCourses().stream();
+			}
+		})); // 1 2 3 4 1 2 3 4
 	}
 
 	private static <T> void printStream(Stream<T> stream) {
