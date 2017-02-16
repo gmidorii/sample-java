@@ -82,8 +82,15 @@ public class Main {
 
 		/**
 		 * filter(Predicate<? super T> predicate)
+		 *
 		 */
-		 printStream(listInt.stream().filter(x -> x > 5)); // 6 7 8 9 10
+		printStream(listInt.stream().filter(x -> x > 5)); // 6 7 8 9 10
+
+		List<Train> trains = Lists.newArrayList(
+				new Train("1"), new Train("2", "nozomi"), new Train("3")
+		);
+		// method reference
+		printStream(trains.stream().filter(Train::hasName)); // Train{name='nozomi'}
 	}
 
 	private static <T> void printStream(Stream<T> stream) {
