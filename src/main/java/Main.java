@@ -5,6 +5,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		JDKSample jdk = new JDKSample();
-		jdk.samples();
+		//jdk.samples();
+
+		ECSample ec = new ECSample();
+		ec.samples();
 	}
 }
