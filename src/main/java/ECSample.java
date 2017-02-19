@@ -50,9 +50,36 @@ public class ECSample {
 		System.out.println(partitionList.getSelected()); // [4, 5]
 		System.out.println(partitionList.getRejected()); // [1, 2, 3]
 
+		/**
+		 * collect(Function<? super T,? extends V> function)
+		 */
+		immutable
+				.of("one", "two", "three", "four", "five")
+				.collect(x -> x.length())
+				.forEach(System.out::print); //33544
+		newLine();
+		System.out.println(
+				createTrains()
+					.collect(t -> t.getName()) // [nozomi, hikari, yamanote, ginza]
+		);
+		createTrains()
+			.collect(t -> {
+				String name = t.getName();
+				return new Train(name);
+			})
+			.forEach(x -> {
+					System.out.print(x.getId());
+					System.out.print(" ,");
+			}); // nozomi ,hikari ,yamanote ,ginza ,
 	}
 
 	private void newLine() {
 		System.out.println();
+	}
+
+	private ImmutableList<Train> createTrains() {
+		return immutable
+				.of(new Train("1", "nozomi"),new Train("2", "hikari"),
+						new Train("3", "yamanote"),new Train("4", "ginza"));
 	}
 }
