@@ -71,6 +71,17 @@ public class ECSample {
 					System.out.print(x.getId());
 					System.out.print(" ,");
 			}); // nozomi ,hikari ,yamanote ,ginza ,
+		newLine();
+
+		/**
+		 * flatCollect(Function<? super T,? extends Iterable<V>> function)
+		 * XXX jdk -> flatMap
+		 */
+		immutable
+				.of(createTrains(),
+						createTrains())
+				.flatCollect(ts -> ts.collect(t -> t.getId()))
+				.forEach(System.out::print); //12341234
 	}
 
 	private void newLine() {
