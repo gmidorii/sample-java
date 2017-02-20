@@ -82,6 +82,16 @@ public class ECSample {
 						createTrains())
 				.flatCollect(ts -> ts.collect(t -> t.getId()))
 				.forEach(System.out::print); //12341234
+		newLine();
+
+		/**
+		 * groupBy(Function<? super T,? extends V> function)
+		 */
+		System.out.println(
+				immutable
+					.of(1, 2, 3, 4, 5)
+					.groupBy(x -> x % 2 == 0) //{false=[1, 3, 5], true=[2, 4]}
+		);
 	}
 
 	private void newLine() {
