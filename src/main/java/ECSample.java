@@ -134,6 +134,15 @@ public class ECSample {
 			System.out.println(list.detectIfNone(x -> x.equals(3), () -> 10)); // 3
 			System.out.println(list.detectIfNone(x -> x.equals(100), () -> 10)); // 10
 		}
+
+		/**
+		 * anySatisfy(Predicate<? super T> predicate)
+		 */
+		{
+			ImmutableList<Integer> list = immutable.of(1, 2, 3, 4, 5);
+			System.out.println(list.anySatisfy(x -> x.equals(3))); // true
+			System.out.println(list.anySatisfy(x -> x.equals(100))); // false
+		}
 	}
 
 	private void newLine() {
