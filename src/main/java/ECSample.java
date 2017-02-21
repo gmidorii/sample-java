@@ -35,6 +35,7 @@ public class ECSample {
 
 		/**
 		 * reject(Predicate<? super T> predicate)
+		 * return List<T>
 		 */
 		{
 			immutable
@@ -46,6 +47,7 @@ public class ECSample {
 
 		/**
 		 * partition(Predicate<? super T> predicate)
+		 * return PartitionList<T>
 		 */
 		{
 			PartitionImmutableList<Integer> partitionList = immutable
@@ -57,6 +59,7 @@ public class ECSample {
 
 		/**
 		 * collect(Function<? super T,? extends V> function)
+		 * return <V,R extends Collection<V>> R
 		 */
 		{
 			immutable
@@ -83,6 +86,7 @@ public class ECSample {
 		/**
 		 * flatCollect(Function<? super T,? extends Iterable<V>> function)
 		 * XXX jdk -> flatMap
+		 * return List<V>
 		 */
 		{
 			immutable
@@ -95,6 +99,7 @@ public class ECSample {
 
 		/**
 		 * groupBy(Function<? super T,? extends V> function)
+		 * return MultiMap<V, T>
 		 */
 		{
 			System.out.println(
@@ -119,6 +124,7 @@ public class ECSample {
 
 		/**
 		 * detect(Predicate<? super T> predicate)
+		 * return T
 		 */
 		{
 			ImmutableList<Integer> list = immutable.of(1, 2, 3, 4, 5);
@@ -128,6 +134,7 @@ public class ECSample {
 
 		/**
 		 * detectIfNone(Predicate<? super T> predicate, Function0<? extends T> defaultValueBlock)
+		 * return T
 		 */
 		{
 			ImmutableList<Integer> list = immutable.of(1, 2, 3, 4, 5);
@@ -137,6 +144,7 @@ public class ECSample {
 
 		/**
 		 * anySatisfy(Predicate<? super T> predicate)
+		 * return boolean
 		 */
 		{
 			ImmutableList<Integer> list = immutable.of(1, 2, 3, 4, 5);
