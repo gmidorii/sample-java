@@ -114,6 +114,25 @@ public class ECSample {
 				System.out.print(v);
 				System.out.print(" ");
 			}); // 5,[Train{name='ginza'}] 6,[Train{name='nozomi'}, Train{name='hikari'}] 8,[Train{name='yamanote'}]
+			newLine();
+		}
+
+		/**
+		 * detect(Predicate<? super T> predicate)
+		 */
+		{
+			ImmutableList<Integer> list = immutable.of(1, 2, 3, 4, 5);
+			System.out.println(list.detect(x -> x.equals(3))); // 3
+			System.out.println(list.detect(x -> x.equals(100))); // null
+		}
+
+		/**
+		 * detectIfNone(Predicate<? super T> predicate, Function0<? extends T> defaultValueBlock)
+		 */
+		{
+			ImmutableList<Integer> list = immutable.of(1, 2, 3, 4, 5);
+			System.out.println(list.detectIfNone(x -> x.equals(3), () -> 10)); // 3
+			System.out.println(list.detectIfNone(x -> x.equals(100), () -> 10)); // 10
 		}
 	}
 
