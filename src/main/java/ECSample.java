@@ -7,6 +7,7 @@ import org.eclipse.collections.impl.list.mutable.FastList;
 import java.util.List;
 
 import static org.eclipse.collections.impl.factory.Lists.immutable;
+import static org.eclipse.collections.impl.factory.Lists.mutable;
 
 /**
  * Created by midori on 2017/02/16.
@@ -199,6 +200,19 @@ public class ECSample {
 				System.out.print(" ");
 			});
 			newLine();
+		}
+
+		/**
+		 * injectInto(IV injectedValue, Function2<? super IV,? super T,? extends IV> function)
+		 * return IV
+		 */
+		{
+			System.out.println(
+					Lists.mutable.of("1", "2", "3")
+					.injectInto("", (memo, v) -> {
+							return memo + "-" + v;
+					})
+			); // -1-2-3
 		}
 	}
 
