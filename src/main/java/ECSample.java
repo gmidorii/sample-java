@@ -1,4 +1,5 @@
 import org.eclipse.collections.api.list.ImmutableList;
+import org.eclipse.collections.api.multimap.Multimap;
 import org.eclipse.collections.api.partition.list.PartitionImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
 import org.eclipse.collections.impl.list.mutable.FastList;
@@ -87,11 +88,25 @@ public class ECSample {
 		/**
 		 * groupBy(Function<? super T,? extends V> function)
 		 */
-		System.out.println(
-				immutable
-					.of(1, 2, 3, 4, 5)
-					.groupBy(x -> x % 2 == 0) //{false=[1, 3, 5], true=[2, 4]}
-		);
+		{
+			System.out.println(
+					immutable
+							.of(1, 2, 3, 4, 5)
+							.groupBy(x -> x % 2 == 0) //{false=[1, 3, 5], true=[2, 4]}
+			);
+			Multimap<Integer, Train> nameLenMap = createTrains()
+					.groupBy(t -> t.getName().length());
+			nameLenMap.forEachKey(System.out::print); //568
+			newLine();
+			nameLenMap.forEachValue(System.out::print); // Train{name='ginza'}Train{name='nozomi'}Train{name='hikari'}Train{name='yamanote'}
+			newLine();
+			nameLenMap.forEachKeyMultiValues((k, v) -> {
+				System.out.print(k);
+				System.out.print(",");
+				System.out.print(v);
+				System.out.print(" ");
+			}); // 5,[Train{name='ginza'}] 6,[Train{name='nozomi'}, Train{name='hikari'}] 8,[Train{name='yamanote'}]
+		}
 	}
 
 	private void newLine() {
