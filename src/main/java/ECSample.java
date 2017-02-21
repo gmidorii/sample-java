@@ -17,12 +17,15 @@ public class ECSample {
 
 		/**
 		 * select(Predicate<? super T> predicate)
+		 * return List<T>
 		 */
-		immutable
-				.of(1, 2, 3, 4, 5)
-				.select(x -> x > 3)
-				.forEach(System.out::print);
-		System.out.println();
+		{
+			immutable
+					.of(1, 2, 3, 4, 5)
+					.select(x -> x > 3)
+					.forEach(System.out::print);
+			System.out.println();
+		}
 
 		// ============================
 		// List
