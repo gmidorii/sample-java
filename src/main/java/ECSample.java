@@ -154,6 +154,37 @@ public class ECSample {
 			System.out.println(list.anySatisfy(x -> x.equals(3))); // true
 			System.out.println(list.anySatisfy(x -> x.equals(100))); // false
 		}
+
+		/**
+		 * allSatisfy(Predicate<? super T> predicate)
+		 * return boolean
+		 */
+		{
+			ImmutableList<Integer> list = immutable.of(1, 2, 3, 4, 5);
+			System.out.println(list.allSatisfy(x -> x < 10)); // true
+			System.out.println(list.allSatisfy(x -> x > 10)); // false
+		}
+
+		/**
+		 * noneSatisfy(Predicate<? super T> predicate)
+		 * return boolean
+		 */
+		{
+			ImmutableList<Integer> list = immutable.of(1, 2, 3, 4, 5);
+			System.out.println(list.noneSatisfy(x -> x > 10)); // true
+			System.out.println(list.noneSatisfy(x -> x < 10)); // false
+		}
+
+		/**
+		 * each(Procedure<? super T> procedure)
+		 * return void
+		 * XXX not use forEach() because it is same name method in jdk
+		 */
+		{
+			immutable
+					.of(1, 2, 3, 4, 5)
+					.each(System.out::print); // 12345
+		}
 	}
 
 	private void newLine() {
