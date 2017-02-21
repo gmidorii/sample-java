@@ -184,6 +184,21 @@ public class ECSample {
 			immutable
 					.of(1, 2, 3, 4, 5)
 					.each(System.out::print); // 12345
+			newLine();
+		}
+
+		/**
+		 * forEachWithIndex(ObjectIntProcedure<? super T> objectIntProcedure)
+		 * return void
+		 */
+		{
+			FastList.newListWith(10, 20, 30).forEachWithIndex((v, i) -> {
+				System.out.print(i);
+				System.out.print(",");
+				System.out.print(v);
+				System.out.print(" ");
+			});
+			newLine();
 		}
 	}
 
