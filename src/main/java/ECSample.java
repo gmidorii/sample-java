@@ -1,6 +1,7 @@
 import org.eclipse.collections.api.LazyIterable;
 import org.eclipse.collections.api.RichIterable;
 import org.eclipse.collections.api.list.ImmutableList;
+import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.api.multimap.Multimap;
 import org.eclipse.collections.api.partition.list.PartitionImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
@@ -9,6 +10,7 @@ import org.eclipse.collections.impl.list.mutable.FastList;
 import java.util.List;
 
 import static org.eclipse.collections.impl.factory.Lists.immutable;
+import static org.eclipse.collections.impl.factory.Lists.mutable;
 
 /**
  * Created by midori on 2017/02/16.
@@ -301,6 +303,18 @@ public class ECSample {
 		{
 			RichIterable<Integer> list = immutable.of(1, 2, 3, 4, 5);
 			System.out.println(list.count(x -> x % 2 == 0)); // 2
+			seperateLine();
+		}
+
+		/**
+		 * getFirst(), getLast()
+		 * return T
+		 */
+		{
+			MutableList<Integer> list = mutable.of(1, 2, 3, 4, 5);
+			System.out.println(list.getFirst()); // 1
+			System.out.println(list.getLast()); // 5
+			seperateLine();
 		}
 	}
 
