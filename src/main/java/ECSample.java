@@ -279,6 +279,18 @@ public class ECSample {
 			System.out.println(list.makeString()); // 1, 2, 3, 4, 5
 			System.out.println(list.makeString(".")); // 1.2.3.4.5
 			System.out.println(list.makeString("{", ",", "}")); // 1.2.3.4.5
+			newLine();
+		}
+
+		/**
+		 * appendString(Appendable appendable)
+		 * return void
+		 */
+		{
+			RichIterable<Integer> list = immutable.of(1, 2, 3, 4, 5);
+			StringBuilder sb = new StringBuilder();
+			list.appendString(sb, "|");
+			System.out.println(sb); // 1|2|3|4|5
 		}
 	}
 
