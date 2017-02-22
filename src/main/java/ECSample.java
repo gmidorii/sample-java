@@ -269,6 +269,17 @@ public class ECSample {
 			 5 <- 5
 			 */
 		}
+
+		/**
+		 * makeString()
+		 * return String
+		 */
+		{
+			RichIterable<Integer> list = immutable.of(1, 2, 3, 4, 5);
+			System.out.println(list.makeString()); // 1, 2, 3, 4, 5
+			System.out.println(list.makeString(".")); // 1.2.3.4.5
+			System.out.println(list.makeString("{", ",", "}")); // 1.2.3.4.5
+		}
 	}
 
 	private void lazyTest(RichIterable<Integer> list) {
