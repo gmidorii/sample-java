@@ -230,6 +230,7 @@ public class ECSample {
 
 	private void newLine() {
 		System.out.println();
+		System.out.println("----------------------------------");
 	}
 
 	private ImmutableList<Train> createTrains() {
