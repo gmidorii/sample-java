@@ -47,7 +47,7 @@ public class ECSample {
 					.of(1, 2, 3, 4, 5)
 					.reject(x -> x > 3)
 					.forEach(System.out::print); //123
-			newLine();
+			seperateLine();
 		}
 
 		/**
@@ -71,7 +71,7 @@ public class ECSample {
 					.of("one", "two", "three", "four", "five")
 					.collect(x -> x.length())
 					.forEach(System.out::print); //33544
-			newLine();
+			seperateLine();
 			System.out.println(
 					createTrains()
 							.collect(t -> t.getName()) // [nozomi, hikari, yamanote, ginza]
@@ -85,7 +85,7 @@ public class ECSample {
 						System.out.print(x.getId());
 						System.out.print(" ,");
 					}); // nozomi ,hikari ,yamanote ,ginza ,
-			newLine();
+			seperateLine();
 		}
 
 		/**
@@ -99,7 +99,7 @@ public class ECSample {
 							createTrains())
 					.flatCollect(ts -> ts.collect(t -> t.getId()))
 					.forEach(System.out::print); //12341234
-			newLine();
+			seperateLine();
 		}
 
 		/**
@@ -115,16 +115,16 @@ public class ECSample {
 			Multimap<Integer, Train> nameLenMap = createTrains()
 					.groupBy(t -> t.getName().length());
 			nameLenMap.forEachKey(System.out::print); //568
-			newLine();
+			seperateLine();
 			nameLenMap.forEachValue(System.out::print); // Train{name='ginza'}Train{name='nozomi'}Train{name='hikari'}Train{name='yamanote'}
-			newLine();
+			seperateLine();
 			nameLenMap.forEachKeyMultiValues((k, v) -> {
 				System.out.print(k);
 				System.out.print(",");
 				System.out.print(v);
 				System.out.print(" ");
 			}); // 5,[Train{name='ginza'}] 6,[Train{name='nozomi'}, Train{name='hikari'}] 8,[Train{name='yamanote'}]
-			newLine();
+			seperateLine();
 		}
 
 		/**
@@ -186,7 +186,7 @@ public class ECSample {
 			immutable
 					.of(1, 2, 3, 4, 5)
 					.each(System.out::print); // 12345
-			newLine();
+			seperateLine();
 		}
 
 		/**
@@ -200,7 +200,7 @@ public class ECSample {
 				System.out.print(v);
 				System.out.print(" ");
 			});
-			newLine();
+			seperateLine();
 		}
 
 		/**
@@ -226,7 +226,7 @@ public class ECSample {
 					.tap(System.out::print) // 12345
 					.select(x -> x > 3)
 					.each(System.out::print); // 45
-			newLine();
+			seperateLine();
 		}
 
 		/**
@@ -279,7 +279,7 @@ public class ECSample {
 			System.out.println(list.makeString()); // 1, 2, 3, 4, 5
 			System.out.println(list.makeString(".")); // 1.2.3.4.5
 			System.out.println(list.makeString("{", ",", "}")); // 1.2.3.4.5
-			newLine();
+			seperateLine();
 		}
 
 		/**
@@ -307,11 +307,11 @@ public class ECSample {
 		});
 		System.out.println("3. each print");
 		plusOnes.each(System.out::print);
-		newLine();
+		seperateLine();
 	}
 
 
-	private void newLine() {
+	private void seperateLine() {
 		System.out.println();
 		System.out.println("----------------------------------");
 	}
