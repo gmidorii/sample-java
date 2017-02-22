@@ -1,3 +1,5 @@
+import org.eclipse.collections.api.LazyIterable;
+import org.eclipse.collections.api.RichIterable;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.api.multimap.Multimap;
 import org.eclipse.collections.api.partition.list.PartitionImmutableList;
@@ -7,7 +9,6 @@ import org.eclipse.collections.impl.list.mutable.FastList;
 import java.util.List;
 
 import static org.eclipse.collections.impl.factory.Lists.immutable;
-import static org.eclipse.collections.impl.factory.Lists.mutable;
 
 /**
  * Created by midori on 2017/02/16.
@@ -225,8 +226,67 @@ public class ECSample {
 					.tap(System.out::print) // 12345
 					.select(x -> x > 3)
 					.each(System.out::print); // 45
+			newLine();
+		}
+
+		/**
+		 * Lazy Iteration
+		 */
+		{
+			// normal
+			ImmutableList<Integer> list = immutable.of(1, 2, 3, 4, 5);
+			lazyTest(list);
+			/** print
+			 1. select x > 2
+			 1. exec
+			 1. exec
+			 1. exec
+			 1. exec
+			 1. exec
+			 2. collect +1
+			 2. exec
+			 2. exec
+			 2. exec
+			 3. each print
+			 345
+			 */
+
+			// lazy
+			LazyIterable<Integer> listLazy = list.asLazy();
+			lazyTest(listLazy);
+			/**
+			 1. select x > 2
+			 2. collect +1
+			 3. each print
+			 1. exec
+			 1. exec
+			 1. exec
+			 2. exec
+			 31. exec <- 3
+			 2. exec
+			 41. exec <- 4
+			 2. exec
+			 5 <- 5
+			 */
 		}
 	}
+
+	private void lazyTest(RichIterable<Integer> list) {
+		System.out.println("1. select x > 2");
+		RichIterable<Integer> biggerTwos = list.select(x -> {
+			System.out.println("1. exec");
+			return x > 2;
+		});
+		System.out.println("2. collect +1");
+		RichIterable<Integer> plusOnes = biggerTwos.collect(x -> {
+			System.out.println("2. exec");
+			return x++;
+		});
+		System.out.println("3. each print");
+		plusOnes.each(System.out::print);
+		newLine();
+	}
+
 
 	private void newLine() {
 		System.out.println();
