@@ -291,6 +291,16 @@ public class ECSample {
 			StringBuilder sb = new StringBuilder();
 			list.appendString(sb, "|");
 			System.out.println(sb); // 1|2|3|4|5
+			seperateLine();
+		}
+
+		/**
+		 * count(Predicate<? super T> predicate)
+		 * return int
+		 */
+		{
+			RichIterable<Integer> list = immutable.of(1, 2, 3, 4, 5);
+			System.out.println(list.count(x -> x % 2 == 0)); // 2
 		}
 	}
 
