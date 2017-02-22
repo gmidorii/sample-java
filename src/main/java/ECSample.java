@@ -214,6 +214,18 @@ public class ECSample {
 					})
 			); // -1-2-3
 		}
+
+		/**
+		 * tap(Procedure<? super T> procedure)
+		 * return List<T>
+		 */
+		{
+			immutable
+					.of(1, 2, 3, 4, 5)
+					.tap(System.out::print) // 12345
+					.select(x -> x > 3)
+					.each(System.out::print); // 45
+		}
 	}
 
 	private void newLine() {
