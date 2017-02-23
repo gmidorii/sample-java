@@ -407,6 +407,14 @@ public class ECSample {
 			System.out.println(list.drop(2)); // [3, 4, 5]
 			seperateLine();
 		}
+
+		/**
+		 * distinct()
+		 * return List
+		 */
+		{
+			System.out.println(Lists.mutable.of(1, 1, 2, 3, 3, 4, 4, 5).distinct()); // [1, 2, 3, 4, 5]
+		}
 	}
 
 	private void lazyTest(RichIterable<Integer> list) {
