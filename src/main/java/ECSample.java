@@ -396,6 +396,17 @@ public class ECSample {
 			System.out.println(listPairs); // [1:one, 2:two, 3:three]
 			seperateLine();
 		}
+
+		/**
+		 * take/drop
+		 * return List
+		 */
+		{
+			MutableList<Integer> list = Lists.mutable.of(1, 2, 3, 4, 5);
+			System.out.println(list.take(2)); // [1, 2]
+			System.out.println(list.drop(2)); // [3, 4, 5]
+			seperateLine();
+		}
 	}
 
 	private void lazyTest(RichIterable<Integer> list) {
