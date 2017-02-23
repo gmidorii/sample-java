@@ -330,11 +330,46 @@ public class ECSample {
 
 		/**
 		 * maxBy()/minBy()
+		 * return T
 		 */
 		{
 			MutableList<String> list = Lists.mutable.of("on", "two", "three");
 			System.out.println(list.maxBy(x -> x.length())); // three
 			System.out.println(list.minBy(x -> x.length())); // on
+			seperateLine();
+		}
+
+		/**
+		 * aggregateBy(Function<? super T,? extends K> groupBy,
+		 *             Function0<? extends V> zeroValueFactory,
+		 *             Function2<? super V,? super T,? extends V> nonMutatingAggregator)
+		 * return MutableMap<K, V>
+		 */
+		{
+			System.out.println(
+					Lists.mutable
+							.of(1, 2, 3, 4, 5)
+					    .aggregateBy(
+					    		n -> (n % 2 == 0) ? "E" : "O",
+									() -> Lists.mutable.empty(),
+									(list, n) -> {
+										list.add(n);
+										return list;
+									}
+							) // {E=[2, 4], O=[1, 3, 5]}
+			);
+			System.out.println(
+					Lists.mutable
+							.of("one", "two", "three")
+							.aggregateBy(
+									x -> x.length(),
+									() -> Lists.mutable.empty(),
+									(list, n) -> {
+										list.add(n);
+										return list;
+									}
+							) // {3=[one, two], 5=[three]}
+			);
 			seperateLine();
 		}
 	}
