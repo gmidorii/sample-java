@@ -323,8 +323,19 @@ public class ECSample {
 		 */
 		{
 			MutableList<Integer> list = Lists.mutable.of(1, 2, 3, 4, 5);
-			System.out.println(list.max());
-			System.out.println(list.min());
+			System.out.println(list.max()); // 5
+			System.out.println(list.min()); // 1
+			seperateLine();
+		}
+
+		/**
+		 * maxBy()/minBy()
+		 */
+		{
+			MutableList<String> list = Lists.mutable.of("on", "two", "three");
+			System.out.println(list.maxBy(x -> x.length())); // three
+			System.out.println(list.minBy(x -> x.length())); // on
+			seperateLine();
 		}
 	}
 
