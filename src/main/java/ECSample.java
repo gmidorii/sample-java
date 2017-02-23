@@ -316,6 +316,16 @@ public class ECSample {
 			System.out.println(list.getLast()); // 5
 			seperateLine();
 		}
+
+		/**
+		 * max()/min()
+		 * return T
+		 */
+		{
+			MutableList<Integer> list = Lists.mutable.of(1, 2, 3, 4, 5);
+			System.out.println(list.max());
+			System.out.println(list.min());
+		}
 	}
 
 	private void lazyTest(RichIterable<Integer> list) {
