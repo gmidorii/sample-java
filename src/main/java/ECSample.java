@@ -37,8 +37,8 @@ public class ECSample {
 			immutable
 					.of(1, 2, 3, 4, 5)
 					.select(x -> x > 3)
-					.forEach(System.out::print);
-			System.out.println();
+					.forEach(System.out::print); // 45
+			seperateLine();
 		}
 
 		/**
@@ -63,6 +63,7 @@ public class ECSample {
 					.partition(x -> x > 3);
 			System.out.println(partitionList.getSelected()); // [4, 5]
 			System.out.println(partitionList.getRejected()); // [1, 2, 3]
+			seperateLine();
 		}
 
 		/**
