@@ -415,6 +415,20 @@ public class ECSample {
 		{
 			System.out.println(Lists.mutable.of(1, 1, 2, 3, 3, 4, 4, 5).distinct()); // [1, 2, 3, 4, 5]
 		}
+
+		/**
+		 * with/withOut
+		 * return List
+		 */
+		{
+			Lists.mutable
+					.of(1, 2, 3)
+					.tap(System.out::print) // 123
+					.with(4)
+					.tap(System.out::print) // 1234
+					.without(2)
+					.each(System.out::print); // 134
+		}
 	}
 
 	private void lazyTest(RichIterable<Integer> list) {
