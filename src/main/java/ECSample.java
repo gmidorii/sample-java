@@ -20,6 +20,15 @@ public class ECSample {
 
 	public void samples() {
 
+		// ============================
+		// List
+		// ============================
+		List<Integer> l1 = FastList.newList();
+		List<Integer> l2 = FastList.newListWith(1, 2, 3, 4);
+		List<Integer> l3 = Lists.mutable.of(1, 2, 3);
+		// Type must be ImmutableList<>
+		ImmutableList<Integer> l4 = Lists.immutable.of();
+
 		/**
 		 * select(Predicate<? super T> predicate)
 		 * return List<T>
@@ -31,15 +40,6 @@ public class ECSample {
 					.forEach(System.out::print);
 			System.out.println();
 		}
-
-		// ============================
-		// List
-		// ============================
-		List<Integer> l1 = FastList.newList();
-		List<Integer> l2 = FastList.newListWith(1, 2, 3, 4);
-		List<Integer> l3 = Lists.mutable.of(1, 2, 3);
-		// Type must be ImmutableList<>
-		ImmutableList<Integer> l4 = Lists.immutable.of();
 
 		/**
 		 * reject(Predicate<? super T> predicate)
