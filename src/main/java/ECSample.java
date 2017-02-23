@@ -4,6 +4,7 @@ import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.api.multimap.Multimap;
 import org.eclipse.collections.api.partition.list.PartitionImmutableList;
+import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.factory.Lists;
 import org.eclipse.collections.impl.list.mutable.FastList;
 
@@ -370,6 +371,29 @@ public class ECSample {
 									}
 							) // {3=[one, two], 5=[three]}
 			);
+			seperateLine();
+		}
+
+		/**
+		 * chunk(int size)
+		 * return RichIterable<RichIterable>
+		 */
+		{
+			System.out.println(
+					Lists.mutable.of(1, 2, 3, 4, 5, 6, 7).chunk(3) // [[1, 2, 3], [4, 5, 6], [7]]
+			);
+			seperateLine();
+		}
+
+		/**
+		 * zip(Iterable<S> that, R target)
+		 * return List<Pair<K, V>>
+		 */
+		{
+			List<Pair<Integer, String>> listPairs = Lists.mutable
+					.of(1, 2, 3)
+					.zip(Lists.mutable.of("one", "two", "three"));
+			System.out.println(listPairs); // [1:one, 2:two, 3:three]
 			seperateLine();
 		}
 	}
